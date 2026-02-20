@@ -51,5 +51,9 @@ function handleSessionJoin(ws, uuid) {
   ws.session_id = uuid;
   if([...wss.clients].filter( client => client.session_id === uuid).length === 1) {
     ws.send(JSON.stringify({'type':'setHost'}));
+  }else{
+    [...wss.clients].forEach(client => {
+      client.send({'type':'syncRequest'});
+    });
   }
 }
