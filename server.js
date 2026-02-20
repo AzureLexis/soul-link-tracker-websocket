@@ -43,8 +43,6 @@ wss.on('connection', function connection(ws) {
       clients[0].send(JSON.stringify({'type':'setHost'}));
     }
   });
-
-  ws.send('Welcome to the WebSocket server!');
 });
 
 function handleSessionJoin(ws, uuid) {
