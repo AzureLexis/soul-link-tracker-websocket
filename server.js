@@ -53,7 +53,7 @@ function handleSessionJoin(ws, uuid) {
     ws.send(JSON.stringify({'type':'setHost'}));
   }else{
     [...wss.clients].forEach(client => {
-      client.send({'type':'syncRequest'});
+      client.send(JSON.stringify({'type':'syncRequest'}));
     });
   }
 }
